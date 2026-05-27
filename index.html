@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StreamKUS Audience Insight Report</title>
+  <title>From Viewer Reactions to Content Strategy: A Data-Driven Plan for StreamKUS</title>
   <style>
     * {
       box-sizing: border-box;
@@ -308,6 +308,86 @@
 
     .section {
       padding: 74px 0 24px;
+    }
+
+    .project-info {
+      margin-top: -44px;
+      padding-top: 0;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .info-card {
+      border: 2px solid var(--ink);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.80);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .info-card h2,
+    .info-card h3 {
+      letter-spacing: -0.06em;
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .info-card h2 {
+      font-size: clamp(30px, 4vw, 54px);
+    }
+
+    .info-card h3 {
+      font-size: 30px;
+    }
+
+    .info-card p {
+      color: var(--muted);
+    }
+
+    .member-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .member {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.66);
+      font-weight: 800;
+    }
+
+    .member span {
+      color: var(--blue);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .meta-line b {
+      display: inline-flex;
+      align-items: center;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: var(--lime);
+      padding: 8px 12px;
+      box-shadow: 4px 4px 0 var(--ink);
+      font-size: 13px;
     }
 
     .section-title {
@@ -698,7 +778,8 @@
 
       .hero,
       .method-board,
-      .finding-panel {
+      .finding-panel,
+      .info-grid {
         grid-template-columns: 1fr;
       }
 
@@ -754,6 +835,7 @@
         </a>
         <nav class="side-nav" aria-label="report navigation">
           <a href="#top">Overview</a>
+          <a href="#team">Team</a>
           <a href="#data">Data</a>
           <a href="#method">Method</a>
           <a href="#findings">Findings</a>
@@ -769,9 +851,9 @@
       <section class="hero">
         <div class="reveal">
           <div class="kicker"><span></span> Web Report · PBL Scenario 1</div>
-          <h1>Comments are not noise. <span class="stroke">They are signals.</span></h1>
+          <h1>From Viewer Reactions <span class="stroke">to Content Strategy.</span></h1>
           <p class="hero-copy">
-            StreamKUS uses YouTube comments and online community reactions to understand what makes viewers stay, laugh, feel immersed, and share content. This report turns audience language into a practical content plan.
+            A Data-Driven Plan for StreamKUS. This web report uses YouTube comments and online community reactions to understand what makes viewers stay, laugh, feel immersed, and share content.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#findings">핵심 결과 보기</a>
@@ -798,6 +880,34 @@
             <div class="poster-label"><span>Genres</span><span>04</span></div>
             <p>Romance · Thriller · Human Drama · Comedy</p>
           </div>
+        </div>
+      </section>
+
+      <section class="section project-info" id="team">
+        <div class="info-grid reveal">
+          <article class="info-card">
+            <div class="kicker"><span></span> Official Report Title</div>
+            <h2>From Viewer Reactions to Content Strategy: A Data-Driven Plan for StreamKUS</h2>
+            <p>
+              StreamKUS의 첫 오리지널 콘텐츠 기획을 위해 시청자 댓글, 커뮤니티 반응, 키워드 흐름을 분석하고 장르별 콘텐츠 전략을 제안하는 웹 보고서입니다.
+            </p>
+            <div class="meta-line">
+              <b>Course: PBL Scenario 1</b>
+              <b>Format: Web Report</b>
+              <b>Topic: StreamKUS</b>
+            </div>
+          </article>
+
+          <article class="info-card">
+            <h3>Team Members</h3>
+            <p>아래 이름은 임시 자리야. 팀원 이름 보내주면 정확히 바꿔 넣으면 됨.</p>
+            <div class="member-list">
+              <div class="member">전보윤 <span>Data / Web Report</span></div>
+              <div class="member">팀원 2 이름 <span>Analysis</span></div>
+              <div class="member">팀원 3 이름 <span>Data Collection</span></div>
+              <div class="member">팀원 4 이름 <span>Content Proposal</span></div>
+            </div>
+          </article>
         </div>
       </section>
 
