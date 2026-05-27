@@ -39,7 +39,6 @@
       overflow-x: hidden;
     }
 
-    /* ── Progress Bar ── */
     #progress-bar {
       position: fixed; top: 0; left: 0; height: 2px;
       background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--accent-warm));
@@ -48,7 +47,6 @@
       box-shadow: 0 0 8px rgba(184,149,42,0.4);
     }
 
-    /* ── Sticky Nav ── */
     nav {
       position: sticky; top: 0; z-index: 900;
       background: rgba(240,238,234,0.88);
@@ -57,11 +55,14 @@
       border-bottom: 1px solid var(--border-gold);
       padding: 0 max(24px, calc(50% - 600px));
     }
+
     nav ul {
       display: flex; gap: 0; list-style: none;
       overflow-x: auto; scrollbar-width: none;
     }
+
     nav ul::-webkit-scrollbar { display: none; }
+
     nav ul li a {
       display: block; padding: 15px 16px;
       font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
@@ -70,11 +71,12 @@
       white-space: nowrap;
       transition: color var(--transition);
     }
+
     nav ul li a:hover,
     nav ul li a.active { color: var(--gold); }
+
     nav ul li a.active { font-weight: 700; }
 
-    /* ── Layout ── */
     main {
       max-width: 1200px;
       margin: 0 auto;
@@ -86,9 +88,9 @@
       opacity: 0; transform: translateY(28px);
       transition: opacity 0.65s ease, transform 0.65s ease;
     }
+
     section.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── Hero ── */
     #hero {
       min-height: 82vh;
       display: flex; flex-direction: column;
@@ -97,6 +99,7 @@
       position: relative; overflow: hidden;
       opacity: 1; transform: none;
     }
+
     #hero::before {
       content: '';
       position: absolute; inset: 0;
@@ -107,7 +110,6 @@
       pointer-events: none;
     }
 
-    /* Decorative line accent */
     #hero::after {
       content: '';
       position: absolute;
@@ -122,6 +124,7 @@
       display: flex; align-items: center; gap: 12px;
       margin-bottom: 32px;
     }
+
     .hero-tag {
       display: inline-block;
       background: transparent;
@@ -132,6 +135,7 @@
       border: 1px solid var(--border-gold);
       border-radius: 2px;
     }
+
     .hero-year {
       font-size: 11px; letter-spacing: 0.1em;
       color: var(--ink-faint); font-weight: 400;
@@ -146,12 +150,12 @@
       max-width: 780px;
       margin-bottom: 12px;
     }
+
     .hero-title em {
       font-style: italic;
       color: var(--accent);
     }
 
-    /* Thin gold rule under title */
     .hero-rule {
       width: 64px; height: 1px;
       background: linear-gradient(90deg, var(--gold), transparent);
@@ -159,38 +163,59 @@
     }
 
     .hero-meta {
-      display: flex; flex-wrap: wrap; gap: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
       align-items: center;
     }
+
     .team-chip {
-      display: flex; align-items: center; gap: 10px;
-      background: var(--surface);
-      border: 1px solid var(--border-gold);
-      border-radius: 3px;
-      padding: 9px 18px;
-      font-size: 13px; font-weight: 500;
-      letter-spacing: 0.01em;
-      box-shadow: var(--shadow-sm);
-      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
-    }
-    .team-chip:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
-      border-color: var(--gold);
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(247,246,243,0.72));
+      border: 1px solid rgba(184,149,42,0.34);
+      border-radius: 999px;
+      padding: 10px 18px 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+      box-shadow: 0 6px 22px rgba(20,18,16,0.08);
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition), background var(--transition);
     }
 
-    /* ── Section Headers ── */
+    .team-chip::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--accent-warm));
+      box-shadow: 0 0 0 4px rgba(184,149,42,0.12);
+      flex-shrink: 0;
+    }
+
+    .team-chip:hover {
+      box-shadow: 0 12px 34px rgba(20,18,16,0.14);
+      transform: translateY(-2px);
+      border-color: var(--gold);
+      background: #ffffff;
+    }
+
     .section-label {
       font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
       text-transform: uppercase; color: var(--gold);
       margin-bottom: 10px;
       display: flex; align-items: center; gap: 10px;
     }
+
     .section-label::after {
       content: '';
       flex: 1; max-width: 40px; height: 1px;
       background: var(--gold-light); opacity: 0.5;
     }
+
     h2 {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(1.6rem, 3vw, 2.4rem);
@@ -199,6 +224,7 @@
       color: var(--ink);
       margin-bottom: 32px;
     }
+
     h3 {
       font-family: 'DM Serif Display', serif;
       font-size: 1.25rem;
@@ -207,7 +233,6 @@
       letter-spacing: -0.01em;
     }
 
-    /* ── Cards ── */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -216,38 +241,42 @@
       box-shadow: var(--shadow-sm);
       transition: box-shadow var(--transition), transform var(--transition);
     }
+
     .card:hover {
       box-shadow: var(--shadow-md);
       transform: translateY(-3px);
     }
+
     .card p, .card li {
       color: var(--ink-muted);
       font-size: 15px;
     }
+
     .card ul, .card ol {
       padding-left: 20px;
       display: flex; flex-direction: column; gap: 6px;
     }
 
-    /* ── Grid Layouts ── */
     .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
     .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
     .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
 
-    /* ── Introduction ── */
     .intro-card {
       background: linear-gradient(140deg, #1a1714 0%, #2a2520 100%);
       color: #fff;
       border-color: transparent;
       position: relative; overflow: hidden;
     }
+
     .intro-card::before {
       content: '';
       position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
       opacity: 0.6;
     }
+
     .intro-card p { color: rgba(255,255,255,0.72); font-size: 16px; line-height: 1.85; }
+
     .intro-card .placeholder-text {
       background: rgba(255,255,255,0.04);
       border: 1px dashed rgba(184,149,42,0.2);
@@ -259,12 +288,12 @@
       font-style: italic;
     }
 
-    /* ── Data Collection ── */
     .stat-card {
       text-align: center;
       padding: 32px 24px;
       position: relative; overflow: hidden;
     }
+
     .stat-card::after {
       content: '';
       position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
@@ -273,8 +302,11 @@
       opacity: 0;
       transition: opacity var(--transition);
     }
+
     .stat-card:hover::after { opacity: 1; }
+
     .stat-icon { font-size: 1.8rem; margin-bottom: 14px; }
+
     .stat-num {
       font-family: 'DM Serif Display', serif;
       font-size: 2.6rem;
@@ -283,16 +315,17 @@
       margin-bottom: 6px;
       letter-spacing: -0.02em;
     }
+
     .stat-label {
       font-size: 12px; color: var(--ink-faint);
       font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
     }
 
-    /* ── Text Mining ── */
     .method-card {
       position: relative;
       overflow: hidden;
     }
+
     .method-card::before {
       content: '';
       position: absolute; top: 0; left: 0;
@@ -300,6 +333,7 @@
       background: linear-gradient(180deg, var(--gold), var(--accent-warm));
       border-radius: 3px 0 0 3px;
     }
+
     .method-badge {
       display: inline-block;
       background: transparent;
@@ -312,50 +346,61 @@
       margin-bottom: 14px;
     }
 
-    /* ── Genre Cards ── */
     .genre-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+
     .genre-card {
       border-radius: var(--radius);
       padding: 32px;
       position: relative; overflow: hidden;
       transition: box-shadow var(--transition), transform var(--transition);
     }
+
     .genre-card::before {
       content: '';
       position: absolute; top: 0; left: 0; right: 0; height: 1px;
       opacity: 0.5;
     }
+
     .genre-card:hover {
       box-shadow: var(--shadow-lg);
       transform: translateY(-5px);
     }
+
     .genre-card.romance  { background: linear-gradient(145deg, #f9e8ec 0%, #f2d4db 100%); border: 1px solid rgba(201,125,138,0.18); }
     .genre-card.thriller { background: linear-gradient(145deg, #e6eaed 0%, #d4dce2 100%); border: 1px solid rgba(90,110,122,0.18); }
     .genre-card.drama    { background: linear-gradient(145deg, #ede8de 0%, #e0d5c0 100%); border: 1px solid rgba(138,125,90,0.18); }
     .genre-card.comedy   { background: linear-gradient(145deg, #e2ede4 0%, #cce4ce 100%); border: 1px solid rgba(106,158,112,0.18); }
+
     .genre-card.romance::before  { background: linear-gradient(90deg, transparent, rgba(201,125,138,0.4), transparent); }
     .genre-card.thriller::before { background: linear-gradient(90deg, transparent, rgba(90,110,122,0.4), transparent); }
     .genre-card.drama::before    { background: linear-gradient(90deg, transparent, rgba(138,125,90,0.4), transparent); }
     .genre-card.comedy::before   { background: linear-gradient(90deg, transparent, rgba(106,158,112,0.4), transparent); }
+
     .genre-dot {
       width: 44px; height: 44px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.3rem; margin-bottom: 16px;
     }
+
     .genre-card.romance  .genre-dot { background: rgba(201,125,138,0.15); }
     .genre-card.thriller .genre-dot { background: rgba(90,110,122,0.15); }
     .genre-card.drama    .genre-dot { background: rgba(138,125,90,0.15); }
     .genre-card.comedy   .genre-dot { background: rgba(106,158,112,0.15); }
+
     .genre-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
+
     .genre-card.romance  h3 { color: #7a2d3a; }
     .genre-card.thriller h3 { color: #202e38; }
     .genre-card.drama    h3 { color: #3a2d0a; }
     .genre-card.comedy   h3 { color: #0e3a16; }
+
     .genre-sub {
       font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase; margin-bottom: 16px; opacity: 0.45;
     }
+
     .genre-card p { font-size: 14px; line-height: 1.75; opacity: 0.72; }
+
     .placeholder-box {
       margin-top: 16px;
       background: rgba(255,255,255,0.45);
@@ -366,17 +411,18 @@
       font-size: 12px; font-style: italic; opacity: 0.5;
     }
 
-    /* ── Evidence ── */
     .evidence-card {
       border-left: 3px solid var(--gold);
       background: var(--surface-2);
     }
+
     .quote-mark {
       font-family: 'DM Serif Display', serif;
       font-size: 5rem; line-height: 0.6;
       color: var(--gold); opacity: 0.15;
       float: left; margin-right: 12px; margin-top: 8px;
     }
+
     .evidence-placeholder {
       background: var(--surface);
       border: 1px dashed var(--border);
@@ -387,10 +433,10 @@
       font-size: 13px; font-style: italic;
     }
 
-    /* ── Proposals ── */
     .proposal-card {
       display: flex; gap: 22px; align-items: flex-start;
     }
+
     .proposal-num {
       flex-shrink: 0;
       width: 42px; height: 42px;
@@ -404,7 +450,6 @@
       border: 1px solid rgba(184,149,42,0.3);
     }
 
-    /* ── Limitations ── */
     .limit-item {
       display: flex; gap: 16px; align-items: flex-start;
       padding: 20px 24px;
@@ -413,6 +458,7 @@
       border-left: 3px solid var(--border-gold);
       border-radius: var(--radius-sm);
     }
+
     .limit-icon {
       flex-shrink: 0;
       width: 34px; height: 34px; border-radius: 50%;
@@ -422,20 +468,22 @@
       font-size: 0.9rem;
     }
 
-    /* ── Conclusion ── */
     .conclusion-card {
       background: linear-gradient(140deg, #1c3040 0%, #0e2030 100%);
       color: #fff; border: none;
       position: relative; overflow: hidden;
     }
+
     .conclusion-card::before {
       content: '';
       position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
       opacity: 0.5;
     }
+
     .conclusion-card h3 { color: #fff; }
     .conclusion-card p { color: rgba(255,255,255,0.75); font-size: 15px; }
+
     .conclusion-card .placeholder-text {
       background: rgba(255,255,255,0.05);
       border: 1px dashed rgba(184,149,42,0.2);
@@ -446,25 +494,26 @@
       font-style: italic; font-size: 13px;
     }
 
-    /* ── References ── */
     .ref-item {
       padding: 16px 20px;
       border-bottom: 1px solid var(--border);
       font-size: 14px; color: var(--ink-muted);
       display: flex; gap: 14px; align-items: flex-start;
     }
+
     .ref-item:last-child { border-bottom: none; }
+
     .ref-num {
       flex-shrink: 0;
       font-size: 10px; font-weight: 700;
       color: var(--gold); min-width: 24px;
       letter-spacing: 0.06em; padding-top: 2px;
     }
+
     .ref-placeholder {
       color: var(--ink-faint); font-style: italic;
     }
 
-    /* ── Placeholder helpers ── */
     .placeholder-text {
       background: var(--surface-2);
       border: 1px dashed var(--border);
@@ -475,7 +524,6 @@
       font-size: 13px; font-style: italic;
     }
 
-    /* ── Footer ── */
     footer {
       text-align: center;
       padding: 44px 24px;
@@ -483,14 +531,15 @@
       color: var(--ink-faint);
       font-size: 12px; letter-spacing: 0.04em;
     }
+
     footer strong { color: var(--ink-muted); font-weight: 600; }
+
     .footer-rule {
       width: 32px; height: 1px;
       background: linear-gradient(90deg, transparent, var(--gold), transparent);
       margin: 0 auto 16px;
     }
 
-    /* ── Responsive ── */
     @media (max-width: 640px) {
       main { padding: 0 16px 60px; }
       .card { padding: 24px 20px; }
@@ -518,7 +567,6 @@
 
 <main>
 
-  <!-- ══ HERO ══ -->
   <section id="hero">
     <div class="hero-eyebrow">
       <span class="hero-tag">StreamKUS · Content Analysis Report</span>
@@ -536,7 +584,6 @@
     </div>
   </section>
 
-  <!-- ══ INTRODUCTION ══ -->
   <section id="intro">
     <p class="section-label">01 · Introduction</p>
     <h2>Why This Analysis Matters</h2>
@@ -548,7 +595,6 @@
     </div>
   </section>
 
-  <!-- ══ DATA COLLECTION ══ -->
   <section id="data">
     <p class="section-label">02 · Data Collection</p>
     <h2>How We Gathered the Data</h2>
@@ -594,7 +640,6 @@
     </div>
   </section>
 
-  <!-- ══ TEXT MINING METHODS ══ -->
   <section id="methods">
     <p class="section-label">03 · Text Mining Methods</p>
     <h2>Analytical Techniques Used</h2>
@@ -623,7 +668,6 @@
     </div>
   </section>
 
-  <!-- ══ FINDINGS BY GENRE ══ -->
   <section id="findings">
     <p class="section-label">04 · Findings by Genre</p>
     <h2>What Viewers Are Saying</h2>
@@ -664,7 +708,6 @@
     </div>
   </section>
 
-  <!-- ══ EVIDENCE FROM DATA ══ -->
   <section id="evidence">
     <p class="section-label">05 · Evidence from Data</p>
     <h2>Key Data Highlights</h2>
@@ -700,7 +743,6 @@
     </div>
   </section>
 
-  <!-- ══ CONTENT PROPOSALS ══ -->
   <section id="proposals">
     <p class="section-label">06 · Content Proposals</p>
     <h2>Strategic Recommendations</h2>
@@ -749,7 +791,6 @@
     </div>
   </section>
 
-  <!-- ══ LIMITATIONS ══ -->
   <section id="limitations">
     <p class="section-label">07 · Limitations</p>
     <h2>Research Constraints</h2>
@@ -784,7 +825,6 @@
     </div>
   </section>
 
-  <!-- ══ CONCLUSION ══ -->
   <section id="conclusion">
     <p class="section-label">08 · Conclusion</p>
     <h2>Key Takeaways</h2>
@@ -796,7 +836,6 @@
     </div>
   </section>
 
-  <!-- ══ REFERENCES ══ -->
   <section id="references">
     <p class="section-label">09 · References</p>
     <h2>Sources & Citations</h2>
@@ -834,7 +873,6 @@
 </footer>
 
 <script>
-  /* ── Scroll Progress Bar ── */
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -842,7 +880,6 @@
     document.getElementById('progress-bar').style.width = pct + '%';
   });
 
-  /* ── Scroll-reveal ── */
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -854,7 +891,6 @@
 
   document.querySelectorAll('section:not(#hero)').forEach(sec => observer.observe(sec));
 
-  /* ── Active nav highlight ── */
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('nav a');
 
