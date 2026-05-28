@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>From Viewer Reactions to Content Strategy: A Data-Driven Plan for StreamKUS</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --bg: #f0eeea;
@@ -28,8 +29,15 @@
       --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -71,7 +79,9 @@
       scrollbar-width: none;
     }
 
-    nav ul::-webkit-scrollbar { display: none; }
+    nav ul::-webkit-scrollbar {
+      display: none;
+    }
 
     nav ul li a {
       display: block;
@@ -103,8 +113,6 @@
 
     section {
       margin-bottom: 72px;
-      opacity: 1;
-      transform: none;
     }
 
     #hero {
@@ -146,6 +154,8 @@
       align-items: center;
       gap: 12px;
       margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-tag {
@@ -176,6 +186,8 @@
       color: var(--ink);
       max-width: 780px;
       margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-title em {
@@ -188,6 +200,8 @@
       height: 1px;
       background: linear-gradient(90deg, var(--gold), transparent);
       margin: 24px 0 32px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-meta {
@@ -195,6 +209,8 @@
       flex-wrap: wrap;
       gap: 12px;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
 
     .team-chip {
@@ -315,7 +331,7 @@
       gap: 20px;
     }
 
-    .intro-card {
+    .dark-card {
       background: linear-gradient(140deg, #1a1714 0%, #2a2520 100%);
       color: #fff;
       border-color: transparent;
@@ -323,7 +339,7 @@
       overflow: hidden;
     }
 
-    .intro-card::before {
+    .dark-card::before {
       content: '';
       position: absolute;
       top: 0;
@@ -334,42 +350,41 @@
       opacity: 0.6;
     }
 
-    .intro-copy {
-      position: relative;
-      z-index: 1;
-    }
-
-    .intro-copy p {
+    .dark-card p,
+    .dark-card li {
       color: rgba(255,255,255,0.78);
       font-size: 16px;
       line-height: 1.9;
-      margin-bottom: 18px;
     }
 
-    .intro-copy p:last-child {
-      margin-bottom: 0;
-    }
-
-    .intro-copy em {
+    .dark-card em {
       color: #f4d98a;
       font-style: italic;
     }
 
-    .intro-table-wrap {
-      margin: 28px 0 22px;
+    .report-copy p {
+      margin-bottom: 18px;
+    }
+
+    .report-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .table-wrap {
+      margin: 28px 0 24px;
       overflow-x: auto;
       border-radius: var(--radius-sm);
       border: 1px solid rgba(184,149,42,0.24);
       background: rgba(255,255,255,0.04);
     }
 
-    .intro-table {
+    .content-table {
       width: 100%;
       border-collapse: collapse;
       min-width: 620px;
     }
 
-    .intro-table th {
+    .content-table th {
       padding: 14px 18px;
       text-align: left;
       font-size: 11px;
@@ -380,18 +395,18 @@
       border-bottom: 1px solid rgba(184,149,42,0.22);
     }
 
-    .intro-table td {
+    .content-table td {
       padding: 16px 18px;
       color: rgba(255,255,255,0.78);
       font-size: 14px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    .intro-table tr:last-child td {
+    .content-table tr:last-child td {
       border-bottom: none;
     }
 
-    .intro-table td:first-child {
+    .content-table td:first-child {
       color: #f4d98a;
       font-weight: 600;
       white-space: nowrap;
@@ -473,6 +488,18 @@
       margin-bottom: 14px;
     }
 
+    .prompt-box {
+      margin: 22px 0;
+      padding: 22px;
+      border-radius: var(--radius-sm);
+      background: rgba(20,18,16,0.04);
+      border: 1px solid var(--border);
+      color: var(--ink-muted);
+      font-size: 14px;
+      line-height: 1.8;
+      white-space: pre-wrap;
+    }
+
     .genre-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -485,16 +512,6 @@
       position: relative;
       overflow: hidden;
       transition: box-shadow var(--transition), transform var(--transition);
-    }
-
-    .genre-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      opacity: 0.5;
     }
 
     .genre-card:hover {
@@ -522,22 +539,6 @@
       border: 1px solid rgba(106,158,112,0.18);
     }
 
-    .genre-card.romance::before {
-      background: linear-gradient(90deg, transparent, rgba(201,125,138,0.4), transparent);
-    }
-
-    .genre-card.thriller::before {
-      background: linear-gradient(90deg, transparent, rgba(90,110,122,0.4), transparent);
-    }
-
-    .genre-card.drama::before {
-      background: linear-gradient(90deg, transparent, rgba(138,125,90,0.4), transparent);
-    }
-
-    .genre-card.comedy::before {
-      background: linear-gradient(90deg, transparent, rgba(106,158,112,0.4), transparent);
-    }
-
     .genre-dot {
       width: 44px;
       height: 44px;
@@ -547,43 +548,12 @@
       justify-content: center;
       font-size: 1.3rem;
       margin-bottom: 16px;
-    }
-
-    .genre-card.romance .genre-dot {
-      background: rgba(201,125,138,0.15);
-    }
-
-    .genre-card.thriller .genre-dot {
-      background: rgba(90,110,122,0.15);
-    }
-
-    .genre-card.drama .genre-dot {
-      background: rgba(138,125,90,0.15);
-    }
-
-    .genre-card.comedy .genre-dot {
-      background: rgba(106,158,112,0.15);
+      background: rgba(255,255,255,0.45);
     }
 
     .genre-card h3 {
       font-size: 1.1rem;
       margin-bottom: 4px;
-    }
-
-    .genre-card.romance h3 {
-      color: #7a2d3a;
-    }
-
-    .genre-card.thriller h3 {
-      color: #202e38;
-    }
-
-    .genre-card.drama h3 {
-      color: #3a2d0a;
-    }
-
-    .genre-card.comedy h3 {
-      color: #0e3a16;
     }
 
     .genre-sub {
@@ -694,35 +664,9 @@
       overflow: hidden;
     }
 
-    .conclusion-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
-      opacity: 0.5;
-    }
-
-    .conclusion-card h3 {
-      color: #fff;
-    }
-
     .conclusion-card p {
       color: rgba(255,255,255,0.75);
       font-size: 15px;
-    }
-
-    .conclusion-card .placeholder-text {
-      background: rgba(255,255,255,0.05);
-      border: 1px dashed rgba(184,149,42,0.2);
-      border-radius: var(--radius-sm);
-      padding: 28px;
-      text-align: center;
-      color: rgba(255,255,255,0.35);
-      font-style: italic;
-      font-size: 13px;
     }
 
     .ref-item {
@@ -747,22 +691,6 @@
       min-width: 24px;
       letter-spacing: 0.06em;
       padding-top: 2px;
-    }
-
-    .ref-placeholder {
-      color: var(--ink-faint);
-      font-style: italic;
-    }
-
-    .placeholder-text {
-      background: var(--surface-2);
-      border: 1px dashed var(--border);
-      border-radius: var(--radius-sm);
-      padding: 24px;
-      text-align: center;
-      color: var(--ink-faint);
-      font-size: 13px;
-      font-style: italic;
     }
 
     footer {
@@ -810,7 +738,7 @@
         font-size: 11px;
       }
 
-      .intro-table {
+      .content-table {
         min-width: 560px;
       }
     }
@@ -861,49 +789,47 @@
     <p class="section-label">01 · Introduction</p>
     <h2>Why This Analysis Matters</h2>
 
-    <div class="card intro-card">
-      <div class="intro-copy">
-        <p>
-          StreamKUS is a new media company preparing to release its first original content on YouTube and Netflix. Since audience preferences change quickly, relying only on intuition can be risky. Therefore, this project uses a data-driven approach to identify what kinds of genres, themes, and story elements appeal to viewers.
-        </p>
+    <div class="card dark-card report-copy">
+      <p>
+        StreamKUS is a new media company preparing to release its first original content on YouTube and Netflix. Since audience preferences change quickly, relying only on intuition can be risky. Therefore, this project uses a data-driven approach to identify what kinds of genres, themes, and story elements appeal to viewers.
+      </p>
 
-        <p>
-          For this report, our team analyzed eight popular contents across four genre categories: romance, thriller/crime, human and social documentary drama, and comedy.
-        </p>
+      <p>
+        For this report, our team analyzed eight popular contents across four genre categories: romance, thriller/crime, human and social documentary drama, and comedy. The selected contents were <em>Single’s Inferno</em> and <em>When Life Gives You Tangerines</em> for romance, <em>Squid Game</em> and <em>Parasyte</em> for thriller, <em>There Are No Bad Dogs in the World</em> and <em>The Trauma Code</em> for slice of life, and <em>SNL Korea</em> and <em>Shortbox</em> for comedy. By comparing viewer reactions to these works, we aimed to discover patterns that can guide StreamKUS’s future content planning.
+      </p>
 
-        <div class="intro-table-wrap">
-          <table class="intro-table">
-            <thead>
-              <tr>
-                <th>Genre</th>
-                <th>Analyzed Contents</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Romance</td>
-                <td>솔로지옥, 폭싹</td>
-              </tr>
-              <tr>
-                <td>Thriller / Crime</td>
-                <td>오징어게임, 기생수</td>
-              </tr>
-              <tr>
-                <td>Human / Social Documentary Drama</td>
-                <td>세상에 나쁜 개는 없다, 중증</td>
-              </tr>
-              <tr>
-                <td>Comedy</td>
-                <td>SNL, 숏박스</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p>
-          By comparing viewer reactions to these works, we aimed to discover patterns that can guide StreamKUS’s future content planning.
-        </p>
+      <div class="table-wrap">
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th>Genre</th>
+              <th>Analyzed Contents</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Romance</td>
+              <td>Single’s Inferno, When Life Gives You Tangerines</td>
+            </tr>
+            <tr>
+              <td>Thriller / Crime</td>
+              <td>Squid Game, Parasyte</td>
+            </tr>
+            <tr>
+              <td>Human / Social Documentary Drama / Slice of Life</td>
+              <td>There Are No Bad Dogs in the World, The Trauma Code</td>
+            </tr>
+            <tr>
+              <td>Comedy</td>
+              <td>SNL Korea, Shortbox</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+      <p>
+        This structure allowed us to compare not only individual works, but also broader audience patterns across different types of content.
+      </p>
     </div>
   </section>
 
@@ -926,7 +852,7 @@
 
       <div class="card stat-card">
         <div class="stat-icon">📅</div>
-        <div class="stat-num">2025</div>
+        <div class="stat-num">2024-25</div>
         <div class="stat-label">Data Period</div>
       </div>
 
@@ -937,22 +863,22 @@
       </div>
     </div>
 
-    <div class="grid-2">
-      <div class="card">
-        <h3>Data Sources</h3>
-        <div class="placeholder-text">
-          데이터 수집 출처를 여기에 작성해주세요.<br>
-          예: YouTube comments, Theqoo, DCInside, FMKorea 등
-        </div>
-      </div>
+    <div class="card report-copy">
+      <p>
+        We picked 4 different genres: romance, slice of life, thriller, and comedy, and picked 2 shows from each genre to analyze. The reason we divided our analysis targets into genres was because we would get a better understanding of what appeals more to what audience, and for what reason. We picked these 4 genres because they are historically among the most popular genres, and we thought that this would help us get a better idea for planning content.
+      </p>
 
-      <div class="card">
-        <h3>Collection Method</h3>
-        <div class="placeholder-text">
-          수집 방법을 여기에 설명해주세요.<br>
-          예: 댓글 수집 기준, 추천 수/좋아요 기준, 장르별 분류 방식 등
-        </div>
-      </div>
+      <p>
+        <strong>Dramas:</strong> We used the most watched Netflix shows from 2024-25 from each genre: 1 romance, 1 slice of life, and 3 thriller. For Korean reviews, we used Watchapedia (pedia.watcha.com), and for English reviews, we used Rotten Tomatoes (rottentomatoes.com). For each show, we used Codex to collect all user reviews available without post filtering, and piled them into a CSV file.
+      </p>
+
+      <p>
+        <strong>Reality:</strong> We used 1 romance, 1 slice of life, and 2 comedy reality shows that gained traction in recent years, aired on Netflix, TV, YouTube, and Coupang Play respectively. We collected YouTube comments and posts on social media sites Nate (nate.com) and DCInside (dcinside.com), and piled them into a CSV file using Codex for analysis.
+      </p>
+
+      <p>
+        For dramas, we used audience reviews, not critic reviews, as we thought that the overall reviews of a wider audience would be more fit for our needs than the more professional critic reviews. The same thought process went into collecting reality show reviews, as we thought YouTube comments as well as social media posts would be able to represent a wider audience, therefore leading to a better understanding of what the wider audience yearns.
+      </p>
     </div>
   </section>
 
@@ -960,30 +886,46 @@
     <p class="section-label">03 · Text Mining Methods</p>
     <h2>Analytical Techniques Used</h2>
 
-    <div class="grid-3">
+    <div class="grid-3" style="margin-bottom: 24px;">
       <div class="card method-card">
         <span class="method-badge">Method 01</span>
-        <h3>Keyword Analysis</h3>
+        <h3>Sentiment Analysis</h3>
         <p>
-          Frequently repeated words and expressions were identified to understand what viewers focused on in each genre.
+          We used Colab to analyze the sentiment of the collected text data.
         </p>
       </div>
 
       <div class="card method-card">
         <span class="method-badge">Method 02</span>
-        <h3>Sentiment Analysis</h3>
+        <h3>AI-Assisted Review Analysis</h3>
         <p>
-          Viewer reactions were reviewed to understand whether comments expressed positive, negative, or mixed responses.
+          Gemini 3.1 Flash-Lite Preview was used to summarize audience reactions, key themes, and repeated review patterns.
         </p>
       </div>
 
       <div class="card method-card">
         <span class="method-badge">Method 03</span>
-        <h3>Genre Comparison</h3>
+        <h3>Genre-Based Strategy</h3>
         <p>
-          The results were compared across four genre categories to find repeated audience patterns and content planning insights.
+          Positive and negative points were compared by genre and show to decide what StreamKUS should do and avoid.
         </p>
       </div>
+    </div>
+
+    <div class="card report-copy">
+      <p>
+        We collected the sentiment analysis of the collected text using Colab, and with Gemini 3.1 Flash-Lite Preview we used the following prompt:
+      </p>
+
+      <div class="prompt-box">"당신은 영화/TV 평론가이자 데이터 분석가입니다. 전체 리뷰 중 {sample_size}개를 무작위로 추출한 데이터를 바탕으로 종합적인 리뷰 분석을 작성해 주세요. 요구사항: **주의사항: 모든 분석 결과와 응답값은 반드시 '한국어(Korean)'로 작성해 주세요.** 이 작품에 대한 사람들의 반응과 점수 분석 근거를 한국어로 명확하게 작성하세요. 긍정적 피드백, 부정적 피드백, 반복되는 주제를 배열 형태로 매우 상세하게 요약하세요. **중요**: 각 항목은 반드시 '**주제:** 설명' 형식으로 작성하세요. (예시: '**세계관의 확장:** 단순히 게임을 반복하는 것이 아니라...'). 샘플링된 리뷰들에서 가장 많이 언급된 핵심 키워드 상위 10개를 추출하고, 해당 키워드가 샘플 리뷰 내에서 대략 몇 번 언급되었는지 빈도수를 추정하여 포함하세요. 결론을 한국어로 작성하세요."</div>
+
+      <p>
+        The result printed the overall sentiment score out of 10, the frequency of each number, main positive and negative points, and the most frequently mentioned topics and keywords.
+      </p>
+
+      <p>
+        Because our end goal is proposing content for our streaming platform, we analyzed the main positive and negative points for each genre/show and used them to pinpoint what we need to do and what to avoid when making a show for each genre.
+      </p>
     </div>
   </section>
 
@@ -996,7 +938,7 @@
         <div class="genre-dot">💗</div>
         <p class="genre-sub">Genre 01</p>
         <h3>Romance</h3>
-        <p>로맨스 장르 주요 시청자 반응 및 키워드 요약을 여기에 작성해주세요.</p>
+        <p>Romance viewers responded strongly to emotional immersion, relationship chemistry, sincerity, and curiosity about characters’ choices.</p>
         <div class="placeholder-box">📊 시각화 / 차트 삽입 공간</div>
       </div>
 
@@ -1004,7 +946,7 @@
         <div class="genre-dot">🔍</div>
         <p class="genre-sub">Genre 02</p>
         <h3>Thriller / Crime</h3>
-        <p>스릴러·범죄 장르 주요 시청자 반응 및 키워드 요약을 여기에 작성해주세요.</p>
+        <p>Thriller and crime contents gained attention through suspense, survival tension, high-stakes situations, and unpredictable story development.</p>
         <div class="placeholder-box">📊 시각화 / 차트 삽입 공간</div>
       </div>
 
@@ -1012,7 +954,7 @@
         <div class="genre-dot">🎭</div>
         <p class="genre-sub">Genre 03</p>
         <h3>Human / Social Drama</h3>
-        <p>인간·사회 드라마 장르 주요 시청자 반응 및 키워드 요약을 여기에 작성해주세요.</p>
+        <p>Human and social drama contents appealed to viewers through realism, empathy, social meaning, and emotionally relatable stories.</p>
         <div class="placeholder-box">📊 시각화 / 차트 삽입 공간</div>
       </div>
 
@@ -1020,7 +962,7 @@
         <div class="genre-dot">😄</div>
         <p class="genre-sub">Genre 04</p>
         <h3>Comedy</h3>
-        <p>코미디 장르 주요 시청자 반응 및 키워드 요약을 여기에 작성해주세요.</p>
+        <p>Comedy contents received strong reactions when viewers found the situations realistic, relatable, short, direct, and easy to share.</p>
         <div class="placeholder-box">📊 시각화 / 차트 삽입 공간</div>
       </div>
     </div>
@@ -1073,9 +1015,9 @@
       <div class="card proposal-card">
         <div class="proposal-num">1</div>
         <div>
-          <h3>제안 1 제목</h3>
+          <h3>Romance Reality Drama</h3>
           <p style="color:var(--ink-muted);font-size:15px;">
-            콘텐츠 전략 제안 내용을 여기에 작성해주세요. 분석 결과를 바탕으로 한 구체적인 제안을 담아주세요.
+            StreamKUS should create a romance content that emphasizes emotional immersion, sincere relationships, and visible chemistry between characters.
           </p>
         </div>
       </div>
@@ -1083,9 +1025,9 @@
       <div class="card proposal-card">
         <div class="proposal-num">2</div>
         <div>
-          <h3>제안 2 제목</h3>
+          <h3>Survival Thriller Series</h3>
           <p style="color:var(--ink-muted);font-size:15px;">
-            콘텐츠 전략 제안 내용을 여기에 작성해주세요. 분석 결과를 바탕으로 한 구체적인 제안을 담아주세요.
+            Thriller content should include high tension, survival situations, and unpredictable conflicts while avoiding repetitive story structures.
           </p>
         </div>
       </div>
@@ -1093,9 +1035,9 @@
       <div class="card proposal-card">
         <div class="proposal-num">3</div>
         <div>
-          <h3>제안 3 제목</h3>
+          <h3>Human Social Drama</h3>
           <p style="color:var(--ink-muted);font-size:15px;">
-            콘텐츠 전략 제안 내용을 여기에 작성해주세요. 분석 결과를 바탕으로 한 구체적인 제안을 담아주세요.
+            Human and social drama should focus on empathy, realistic problems, and characters that reflect real-life emotions.
           </p>
         </div>
       </div>
@@ -1103,9 +1045,9 @@
       <div class="card proposal-card">
         <div class="proposal-num">4</div>
         <div>
-          <h3>제안 4 제목</h3>
+          <h3>Short-Form Comedy Series</h3>
           <p style="color:var(--ink-muted);font-size:15px;">
-            콘텐츠 전략 제안 내용을 여기에 작성해주세요. 분석 결과를 바탕으로 한 구체적인 제안을 담아주세요.
+            Comedy content should use everyday situations, fast pacing, and relatable humor that can spread easily on YouTube and social platforms.
           </p>
         </div>
       </div>
@@ -1167,17 +1109,27 @@
     <div class="card" style="padding: 8px 20px;">
       <div class="ref-item">
         <span class="ref-num">[1]</span>
-        <span class="ref-placeholder">YouTube viewer comments collected for selected contents.</span>
+        <span>YouTube viewer comments collected for selected contents.</span>
       </div>
 
       <div class="ref-item">
         <span class="ref-num">[2]</span>
-        <span class="ref-placeholder">Online community reactions from Theqoo, DCInside, and FMKorea.</span>
+        <span>Watchapedia user reviews collected for Korean audience reactions.</span>
       </div>
 
       <div class="ref-item">
         <span class="ref-num">[3]</span>
-        <span class="ref-placeholder">Text mining results produced by the team for genre-based comparison.</span>
+        <span>Rotten Tomatoes user reviews collected for English audience reactions.</span>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-num">[4]</span>
+        <span>Online community reactions from Nate and DCInside.</span>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-num">[5]</span>
+        <span>Text mining results produced with Colab, Codex, and Gemini 3.1 Flash-Lite Preview.</span>
       </div>
     </div>
   </section>
