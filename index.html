@@ -317,6 +317,12 @@
       font-style: italic;
     }
 
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 20px;
+    }
+
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -437,50 +443,6 @@
       overflow-x: auto;
     }
 
-    .method-gallery {
-      margin-top: 28px;
-    }
-
-    .method-gallery h3 {
-      margin-bottom: 8px;
-    }
-
-    .gallery-note {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 18px;
-    }
-
-    .image-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-    }
-
-    .image-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(20,18,16,0.08);
-    }
-
-    .image-card img {
-      display: block;
-      width: 100%;
-      height: auto;
-      background: #fff;
-    }
-
-    .image-caption {
-      padding: 12px 14px;
-      border-top: 1px solid var(--border);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--muted);
-      background: var(--surface-2);
-    }
-
     .findings-intro {
       max-width: 760px;
       margin-top: -14px;
@@ -546,6 +508,10 @@
       justify-content: center;
       font-size: 1.3rem;
       margin-bottom: 14px;
+    }
+
+    .finding-head h3 {
+      margin-bottom: 6px;
     }
 
     .target {
@@ -890,10 +856,10 @@
         padding: 24px 20px;
       }
 
+      .grid-2,
       .grid-3,
       .grid-4,
-      .finding-board,
-      .image-gallery {
+      .finding-board {
         grid-template-columns: 1fr;
       }
 
@@ -1110,135 +1076,6 @@
       <p>
         Because our end goal is proposing content for our streaming platform, we analyzed the main positive and negative points for each genre/show and used them to pinpoint what we need to do and what to avoid when making a show for each genre.
       </p>
-
-      <div class="method-gallery">
-        <h3>Text Mining Result Images</h3>
-        <p class="gallery-note">
-          These charts visualize sentiment score distributions and frequently mentioned keywords from the collected review and comment data.
-        </p>
-
-        <div class="image-gallery">
-          <div class="image-card">
-            <img src="method_images/snl_korea_sentiment.png" alt="SNL Korea sentiment analysis chart">
-            <div class="image-caption">SNL Korea · Sentiment Score Distribution</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/snl_korea_keywords.png" alt="SNL Korea keyword frequency chart">
-            <div class="image-caption">SNL Korea · Keyword Frequency</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/shortbox_sentiment.png" alt="Shortbox sentiment analysis chart">
-            <div class="image-caption">Shortbox · Sentiment Score Distribution</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/shortbox_keywords.png" alt="Shortbox keyword frequency chart">
-            <div class="image-caption">Shortbox · Keyword Frequency</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/when_life_gives_you_tangerines_en_sentiment.png" alt="When Life Gives You Tangerines English sentiment chart">
-            <div class="image-caption">When Life Gives You Tangerines · English Sentiment</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/when_life_gives_you_tangerines_en_keywords.png" alt="When Life Gives You Tangerines English keyword chart">
-            <div class="image-caption">When Life Gives You Tangerines · English Keywords</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/when_life_gives_you_tangerines_ko_sentiment.png" alt="When Life Gives You Tangerines Korean sentiment chart">
-            <div class="image-caption">When Life Gives You Tangerines · Korean Sentiment</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/when_life_gives_you_tangerines_ko_keywords.png" alt="When Life Gives You Tangerines Korean keyword chart">
-            <div class="image-caption">When Life Gives You Tangerines · Korean Keywords</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/singles_inferno_sentiment.png" alt="Single's Inferno sentiment analysis chart">
-            <div class="image-caption">Single’s Inferno · Sentiment Score Distribution</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/singles_inferno_keywords.png" alt="Single's Inferno keyword frequency chart">
-            <div class="image-caption">Single’s Inferno · Keyword Frequency</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/no_bad_dogs_sentiment.png" alt="There Are No Bad Dogs in the World sentiment chart">
-            <div class="image-caption">There Are No Bad Dogs in the World · Sentiment</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/no_bad_dogs_keywords.png" alt="There Are No Bad Dogs in the World keyword chart">
-            <div class="image-caption">There Are No Bad Dogs in the World · Keywords</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/trauma_code_ko_sentiment.png" alt="The Trauma Code Korean sentiment chart">
-            <div class="image-caption">The Trauma Code · Korean Sentiment</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/trauma_code_ko_keywords.png" alt="The Trauma Code Korean keyword chart">
-            <div class="image-caption">The Trauma Code · Korean Keywords</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/trauma_code_en_sentiment.png" alt="The Trauma Code English sentiment chart">
-            <div class="image-caption">The Trauma Code · English Sentiment</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/trauma_code_en_keywords.png" alt="The Trauma Code English keyword chart">
-            <div class="image-caption">The Trauma Code · English Keywords</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/squid_game_ko_sentiment.png" alt="Squid Game Korean sentiment chart">
-            <div class="image-caption">Squid Game · Korean Sentiment</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/squid_game_ko_keywords.png" alt="Squid Game Korean keyword chart">
-            <div class="image-caption">Squid Game · Korean Keywords</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/squid_game_en_sentiment.png" alt="Squid Game English sentiment chart">
-            <div class="image-caption">Squid Game · English Sentiment</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/squid_game_en_keywords.png" alt="Squid Game English keyword chart">
-            <div class="image-caption">Squid Game · English Keywords</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/parasyte_ko_sentiment.png" alt="Parasyte Korean sentiment chart">
-            <div class="image-caption">Parasyte · Korean Sentiment</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/parasyte_ko_keywords.png" alt="Parasyte Korean keyword chart">
-            <div class="image-caption">Parasyte · Korean Keywords</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/parasyte_en_sentiment.png" alt="Parasyte English sentiment chart">
-            <div class="image-caption">Parasyte · English Sentiment</div>
-          </div>
-
-          <div class="image-card">
-            <img src="method_images/parasyte_en_keywords.png" alt="Parasyte English keyword chart">
-            <div class="image-caption">Parasyte · English Keywords</div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1418,6 +1255,14 @@
             The core of this content is not dramatic plot twists, but emotional realism found in ordinary life. Family dinners, old photographs, rainy conversations, silent misunderstandings, and small acts of care become emotionally meaningful moments that viewers can deeply relate to.
           </p>
 
+          <p>
+            The series focuses on emotional humanism, showing how loneliness, regret, family conflict, and lost relationships can slowly heal through sincere connection with others. Through warm cinematography, soft seasonal visuals, emotional background music, and realistic dialogue, the drama creates a comforting atmosphere that reflects the emotional style audiences often associate with Korean romance dramas.
+          </p>
+
+          <p>
+            Rather than telling a story about perfect people, “When the Seasons Stay” portrays imperfect individuals learning how to remain beside each other despite emotional scars and changing seasons in life.
+          </p>
+
           <h4>Episodes</h4>
           <ol class="episode-list">
             <li><strong>Ep.1: The Place I Left Behind</strong> (다시 돌아온 계절) — Returning home and facing old memories</li>
@@ -1430,7 +1275,7 @@
 
           <div class="reason-box">
             <p>
-              <strong>Reasons based on collected data:</strong> Text-mining analysis revealed that viewers strongly respond to emotional humanism. Audience reactions frequently included keywords such as cried, love, family, and touching.
+              <strong>Reasons based on collected data:</strong> Text-mining analysis revealed that viewers strongly respond to the emotional humanism that is characteristic of Korean romance dramas. Audience reactions frequently included keywords such as cried, love, family, and touching, indicating that viewers value emotionally sincere stories about relationships, family bonds, healing, and meaningful human connections.
             </p>
           </div>
         </div>
@@ -1453,22 +1298,26 @@
           </div>
 
           <p>
-            The Second Golden Time is a human and social documentary drama that focuses on what happens after a patient survives an emergency. Instead of ending with a successful surgery, the story follows the patient’s second crisis after survival: medical bills, lack of caregivers, trauma, unemployment, family conflict, and social isolation.
+            The Second Golden Time is a human and social documentary drama that focuses on what happens after a patient survives an emergency. Each episode begins with an urgent medical case, such as a traffic accident, workplace injury, or emergency room crisis. However, instead of ending with a successful surgery, the story follows the patient’s second crisis after survival: medical bills, lack of caregivers, trauma, unemployment, family conflict, and social isolation.
+          </p>
+
+          <p>
+            The title “second golden time” refers to the crucial period after treatment, when a patient needs support to return to normal life. By focusing on this stage, the show can provide both the tension and catharsis that viewers enjoyed in The Trauma Code, while also delivering a more realistic and empathetic social message.
           </p>
 
           <h4>Episodes</h4>
           <ol class="episode-list">
             <li><strong>Ep.1: Alive But Not</strong> — A lone elder has nowhere to go after discharge</li>
-            <li><strong>Ep.2: Discharge Faster Than Money</strong> — A delivery driver returns to the road after an accident</li>
-            <li><strong>Ep.3: Lone Wolf</strong> — Successful surgery, but no one to help afterward</li>
-            <li><strong>Ep.4: Alive At What Cost</strong> — A family struggles to pay hospital bills</li>
-            <li><strong>Ep.5: Eerie at the ER</strong> — A deeper look into a misunderstood family member</li>
-            <li><strong>Ep.6: 72 Hours After Discharge</strong> — Following a patient after discharge</li>
+            <li><strong>Ep.2: Discharge Faster Than Money</strong> — A delivery driver is discharged after an accident, but has no choice but to return to the road</li>
+            <li><strong>Ep.3: Lone Wolf</strong> — A successful surgery but no one to help leaves patients lifeless</li>
+            <li><strong>Ep.4: Alive At What Cost</strong> — A patient lives miraculously, but the family has no money to pay the hospital</li>
+            <li><strong>Ep.5: Eerie at the ER</strong> — A deep dive into a family member who looked like a nuisance at the beginning</li>
+            <li><strong>Ep.6: 72 Hours After Discharge</strong> — Following a patient for 72 hours after discharge and showing how healthcare and community support should be connected</li>
           </ol>
 
           <div class="reason-box">
             <p>
-              <strong>Reasons based on collected data:</strong> Viewers responded positively to fast pacing, charismatic characters, team chemistry, cathartic moments, and criticism of the medical system. This proposal keeps those strengths while avoiding unrealistic hero fantasy.
+              <strong>Reasons based on collected data:</strong> This proposal is based on our finding that viewers of The Trauma Code responded positively to fast pacing, charismatic characters, team chemistry, cathartic moments, and criticism of the medical system. Keywords such as fast-paced, characters, satisfying, medical system, and teamwork appeared repeatedly. However, viewers also criticized exaggerated scenes, unrealistic hero-like protagonists, and predictable medical drama clichés. Therefore, The Second Golden Time keeps the strengths of The Trauma Code, such as tension, teamwork, and social criticism, but avoids excessive hero fantasy by focusing on more realistic problems after emergency treatment.
             </p>
           </div>
         </div>
@@ -1495,19 +1344,31 @@
             StreamKUS proposes “Dead Chamber” as its first original psychological survival thriller series. The story follows six strangers who are invited to participate in a mysterious roulette game where each spin determines life or death.
           </p>
 
+          <p>
+            While many survival thrillers focus mainly on violence and action, this series emphasizes psychological fear, human instinct, betrayal, and moral conflict. The suspense comes not only from the deadly games themselves, but from the emotional pressure created when ordinary people are forced to make impossible choices to survive.
+          </p>
+
+          <p>
+            The core of this content is not simply death, but fear and uncertainty. The roulette wheel symbolizes fate, randomness, and desperation. As the game progresses, trust collapses between the participants, hidden secrets are revealed, and viewers begin questioning whether survival can still preserve someone’s humanity.
+          </p>
+
+          <p>
+            The series is designed to maximize immersion through dark cinematic visuals, CG-enhanced game sequences, rapid editing, intense sound design, and claustrophobic camera work. Rather than relying only on shocking scenes, the story builds tension through psychological warfare and unpredictable twists that encourage viewers to continue watching and discussing theories online.
+          </p>
+
           <h4>Episodes</h4>
           <ol class="episode-list">
-            <li><strong>Ep.1: The Invitation</strong> — Six strangers enter a mysterious roulette game</li>
-            <li><strong>Ep.2: The First Spin</strong> — The players realize the game is deadly</li>
-            <li><strong>Ep.3: Trust No One</strong> — Alliances form while suspicion grows</li>
-            <li><strong>Ep.4: Loaded Chamber</strong> — Hidden rules are revealed</li>
-            <li><strong>Ep.5: The Last Bet</strong> — Betrayal destroys the remaining survivors</li>
-            <li><strong>Ep.6: Dead Chamber</strong> — The truth behind the game is uncovered</li>
+            <li><strong>Ep.1: The Invitation</strong> (죽음의 초대) — Six strangers enter a mysterious roulette game</li>
+            <li><strong>Ep.2: The First Spin</strong> (첫번째 룰렛) — The players start the game, but come to a deadly realization</li>
+            <li><strong>Ep.3: Trust No One</strong> (의심의 시작) — Alliances form, while suspicion grows</li>
+            <li><strong>Ep.4: Loaded Chamber</strong> (조작된 게임) — Hidden rules are revealed and players are manipulated</li>
+            <li><strong>Ep.5: The Last Bet</strong> (최후의 선택) — Betrayal destroys the remaining survivors</li>
+            <li><strong>Ep.6: Dead Chamber</strong> (죽음의 룰렛) — The truth behind the game is uncovered</li>
           </ol>
 
           <div class="reason-box">
             <p>
-              <strong>Reasons based on collected data:</strong> Thriller reviews showed frequent mentions of immersion, visual excitement, video quality, and CG. This suggests that audiences value cinematic tension and high-quality production.
+              <strong>Reasons based on collected data:</strong> According to recent popularity rankings on Netflix, survival thrillers have consistently attracted strong audience attention, as shown by the global success of series such as Squid Game and Parasyte: The Grey. Text-mining analysis of viewer reviews on Watcha and Rotten Tomatoes also revealed that keywords such as immersion, visual excitement, video quality, and CG appeared frequently in thriller-related discussions. These findings suggest that audiences strongly value visually engaging experiences, cinematic tension, and high-quality production elements within the thriller genre.
             </p>
           </div>
         </div>
@@ -1531,22 +1392,30 @@
           </div>
 
           <p>
-            This show follows a couple who have gotten married after seven years of dating, but run into realistic fights and laughs as newlyweds. It focuses on life after marriage rather than dating or breakup.
+            This show follows a couple who have gotten married after seven years of dating, but run into realistic fights and laughs as newlyweds.
+          </p>
+
+          <p>
+            Unlike existing shows which focus on the talking, dating, breakup, and marriage stage, this show focuses on life after marriage. It wants to show that marriage is not a happy ending but a start of something new, as the couple run into unexpected situations after becoming husband and wife.
+          </p>
+
+          <p>
+            This show is not centered around dramatic scenes, but instead is centered around aspects of daily life such as going on dates, housewarming, in-laws, money, and much more, which are situations that many viewers have come across before or will come across. This show aims to shed light on these situations in a comedic manner.
           </p>
 
           <h4>Episodes</h4>
           <ol class="episode-list">
-            <li><strong>Ep.1: Do We Need Dates? We’re Married!</strong> — Boundaries between dating and marriage</li>
-            <li><strong>Ep.2: The Housewarming War</strong> — Friends, housewarming, and appearances</li>
-            <li><strong>Ep.3: Your Mother, Not Mine!</strong> — In-law problems</li>
-            <li><strong>Ep.4: Your Money? Our Money?</strong> — Money management problems</li>
-            <li><strong>Ep.5: You’re So Stuck In The Past</strong> — Repetitive talk about past experiences</li>
-            <li><strong>Ep.6: You’ve Got Company</strong> — Social life after marriage</li>
+            <li><strong>Ep.1: Do We Need Dates? We’re Married!</strong> (결혼했는데 왜 데이트해야 돼?) — On the boundaries of dating and marriage</li>
+            <li><strong>Ep.2: The Housewarming War</strong> (신혼집 집들이가 전쟁이 되는 법) — Friends, housewarming, and how we look</li>
+            <li><strong>Ep.3: Your Mother, Not Mine!</strong> (양가 단톡방 답장은 누가 해?) — In-law problems</li>
+            <li><strong>Ep.4: Your Money? Our Money?</strong> (우리 돈이야, 내 돈이야?) — Money management problems</li>
+            <li><strong>Ep.5: You’re So Stuck In The Past</strong> (너 아직도 군대 얘기해?) — Repetitive talk about past experiences and problems</li>
+            <li><strong>Ep.6: You’ve Got Company</strong> (회사 사람 앞 내 배우자) — Social life after marriage</li>
           </ol>
 
           <div class="reason-box">
             <p>
-              <strong>Reasons based on collected data:</strong> Shortbox-related comments showed that viewers react strongly to relatable comedy based on everyday life. The topic of life after marriage was selected to avoid repetition and create expansion potential.
+              <strong>Reasons based on collected data:</strong> After analyzing YouTube comments and social media posts about Shortbox, we concluded that viewers reacted better to comedy when it is based on relatable aspects of life. There were also many requests for an expansion on this series, along with mentions of keywords such as newlywed, military service, work, and marriage. This was the reason behind the format allowing for expansion. If the series expands, viewer comments can be used to decide the topic of future episodes, helping the show avoid repetition and better match viewer wants and needs. Since some comments reacted negatively with words such as boring, repetitive, and stop, we chose life after marriage as a relatively less common topic.
             </p>
           </div>
         </div>
@@ -1574,7 +1443,7 @@
       <div>
         <h3>Platform Differences</h3>
         <p>
-          The amount and type of data differed depending on the content and platform, which made direct comparison difficult.
+          The amount and type of data differed depending on the content and platform. Some works had many YouTube comments, while others had more review-site data or community discussions, which made direct comparison difficult.
         </p>
       </div>
     </div>
@@ -1584,7 +1453,7 @@
       <div>
         <h3>Text Mining Limits</h3>
         <p>
-          Slang, memes, sarcasm, abbreviations, swear words, and community-specific expressions are difficult for AI tools to understand accurately.
+          Slang, memes, sarcasm, abbreviations, swear words, and community-specific expressions are difficult for AI tools to understand accurately. Because of this, some audience reactions may have been misclassified or not fully reflected in the analysis.
         </p>
       </div>
     </div>
@@ -1632,14 +1501,14 @@
         <div class="card conclusion-mini">
           <h3>Limitations</h3>
           <p>
-            The analysis was limited because the data came mainly from publicly available comments and reviews.
+            The analysis was limited because the data came mainly from publicly available comments and reviews. Online comments may reflect more active or opinionated viewers rather than all audiences.
           </p>
         </div>
 
         <div class="card conclusion-mini">
           <h3>Future Research</h3>
           <p>
-            Future research could collect data from TikTok, Instagram, X, Reddit, blogs, and more Korean communities.
+            Future research could collect data from TikTok, Instagram, X, Reddit, blogs, and more Korean communities. It could also compare reactions by age, gender, country, and platform.
           </p>
         </div>
 
