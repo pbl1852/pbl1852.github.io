@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>From Viewer Reactions to Content Strategy: A Data-Driven Plan for StreamKUS</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -24,6 +25,7 @@
       --shadow-lg: 0 24px 70px rgba(20,18,16,0.16);
       --radius: 18px;
       --radius-sm: 10px;
+      --transition: 0.28s ease;
     }
 
     * {
@@ -90,7 +92,7 @@
       text-decoration: none;
       color: var(--muted);
       white-space: nowrap;
-      transition: 0.2s ease;
+      transition: var(--transition);
     }
 
     nav a:hover,
@@ -105,7 +107,7 @@
     }
 
     section {
-      margin-bottom: 78px;
+      margin-bottom: 82px;
       scroll-margin-top: 72px;
     }
 
@@ -170,7 +172,7 @@
     }
 
     .hero-subtitle {
-      max-width: 720px;
+      max-width: 760px;
       color: var(--muted);
       font-size: 17px;
       margin-bottom: 28px;
@@ -187,9 +189,11 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+      align-items: center;
     }
 
-    .team-chip {
+    .team-chip,
+    .repo-link {
       display: inline-flex;
       align-items: center;
       gap: 9px;
@@ -201,15 +205,21 @@
       color: var(--ink);
       font-size: 13px;
       font-weight: 700;
+      text-decoration: none;
     }
 
-    .team-chip::before {
+    .team-chip::before,
+    .repo-link::before {
       content: "";
       width: 7px;
       height: 7px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--gold), var(--accent));
       box-shadow: 0 0 0 4px rgba(184,149,42,0.12);
+    }
+
+    .repo-link {
+      color: var(--gold);
     }
 
     .section-label {
@@ -250,7 +260,7 @@
     h4 {
       font-size: 14px;
       color: var(--gold);
-      margin: 18px 0 8px;
+      margin: 20px 0 8px;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
@@ -259,6 +269,10 @@
       color: var(--muted);
       font-size: 15px;
       margin-bottom: 14px;
+    }
+
+    strong {
+      color: var(--ink);
     }
 
     .card {
@@ -292,6 +306,10 @@
       color: rgba(255,255,255,0.78);
       font-size: 16px;
       line-height: 1.9;
+    }
+
+    .dark-card strong {
+      color: #fff;
     }
 
     .dark-card em {
@@ -469,17 +487,62 @@
       letter-spacing: 0.04em;
     }
 
-    .proposal-card {
+    .image-note {
+      margin-top: 16px;
+      padding: 16px;
+      border: 1px dashed rgba(20,18,16,0.14);
+      border-radius: var(--radius-sm);
+      color: var(--faint);
+      font-size: 13px;
+      background: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+
+    .accordion-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .accordion-item {
+      background: rgba(255,255,255,0.94);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .accordion-item[open] {
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(184,149,42,0.35);
+    }
+
+    .accordion-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 24px 28px;
       display: grid;
-      grid-template-columns: 54px 1fr;
-      gap: 22px;
-      align-items: flex-start;
+      grid-template-columns: auto 1fr auto;
+      gap: 18px;
+      align-items: center;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.96), rgba(247,246,243,0.86));
+      border-bottom: 1px solid transparent;
+    }
+
+    .accordion-item[open] summary {
+      border-bottom-color: var(--border);
+    }
+
+    .accordion-item summary::-webkit-details-marker {
+      display: none;
     }
 
     .proposal-num {
       width: 48px;
       height: 48px;
-      border-radius: 10px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -488,18 +551,61 @@
       font-family: "DM Serif Display", serif;
       font-size: 1.35rem;
       border: 1px solid rgba(184,149,42,0.35);
+      flex-shrink: 0;
+    }
+
+    .summary-title h3 {
+      margin-bottom: 4px;
+    }
+
+    .summary-title span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .toggle-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--border-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-weight: 800;
+      transition: var(--transition);
+    }
+
+    .toggle-icon::before {
+      content: "+";
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .accordion-item[open] .toggle-icon {
+      background: rgba(184,149,42,0.1);
+      transform: rotate(180deg);
+    }
+
+    .accordion-item[open] .toggle-icon::before {
+      content: "–";
+    }
+
+    .proposal-body {
+      padding: 30px 34px 34px;
     }
 
     .meta-list {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 12px 0 16px;
+      margin: 12px 0 18px;
     }
 
     .meta-list span {
       display: inline-flex;
-      padding: 5px 10px;
+      padding: 6px 11px;
       border-radius: 999px;
       background: var(--surface-2);
       border: 1px solid var(--border);
@@ -623,10 +729,6 @@
         grid-template-columns: 1fr;
       }
 
-      .proposal-card {
-        grid-template-columns: 1fr;
-      }
-
       .hero-title {
         font-size: clamp(2rem, 10vw, 3rem);
       }
@@ -634,6 +736,21 @@
       nav a {
         padding: 14px 11px;
         font-size: 10px;
+      }
+
+      .accordion-item summary {
+        grid-template-columns: auto 1fr;
+        padding: 22px 20px;
+      }
+
+      .toggle-icon {
+        grid-column: 1 / -1;
+        width: 100%;
+        border-radius: 999px;
+      }
+
+      .proposal-body {
+        padding: 24px 20px 28px;
       }
     }
   </style>
@@ -680,6 +797,7 @@
       <div class="team-chip">김동혁</div>
       <div class="team-chip">권혜인</div>
       <div class="team-chip">전보윤</div>
+      <a class="repo-link" href="https://github.com/pbl1852/analysis-team" target="_blank">GitHub Repository</a>
     </div>
   </section>
 
@@ -777,6 +895,10 @@
       <p>
         For dramas, we used audience reviews, not critic reviews, as we thought that the overall reviews of a wider audience would be more fit for our needs than the more professional critic reviews. The same thought process went into collecting reality show reviews, as we thought YouTube comments as well as social media posts would be able to represent a wider audience, therefore leading to a better understanding of what the wider audience yearns.
       </p>
+
+      <!-- 이미지 넣고 싶으면 여기에 추가:
+      <img src="data_collection.png" alt="Data collection process" style="width:100%; border-radius:14px; margin-top:18px;">
+      -->
     </div>
   </section>
 
@@ -824,6 +946,10 @@
       <p>
         Because our end goal is proposing content for our streaming platform, we analyzed the main positive and negative points for each genre/show and used them to pinpoint what we need to do and what to avoid when making a show for each genre.
       </p>
+
+      <!-- 이미지 넣고 싶으면 여기에 추가:
+      <img src="text_mining_methods.png" alt="Text mining methods" style="width:100%; border-radius:14px; margin-top:18px;">
+      -->
     </div>
   </section>
 
@@ -842,6 +968,7 @@
         <p>
           For reality shows, the cast made the biggest difference, along with the chemistry between participants. Long scenes and poor editing were the main complaints.
         </p>
+        <!-- 이미지 넣고 싶으면 여기에 추가 -->
       </div>
 
       <div class="card finding-card slice">
@@ -854,6 +981,7 @@
         <p>
           For reality shows, educational aspects and touching scenes were the main positives. However, repetitive plots made some viewers feel bored. The main talking point was the message the content wanted to deliver.
         </p>
+        <!-- 이미지 넣고 싶으면 여기에 추가 -->
       </div>
 
       <div class="card finding-card thriller">
@@ -866,6 +994,7 @@
         <p>
           However, illogical story consistency and underwhelming endings were the main complaints. These shows were also often compared to their predecessors or other similar titles.
         </p>
+        <!-- 이미지 넣고 싶으면 여기에 추가 -->
       </div>
 
       <div class="card finding-card comedy">
@@ -878,24 +1007,31 @@
         <p>
           However, unrealistic or exaggerated points, generalization, and too much political intent made these shows harder to watch. Comedy shows tended to have very mixed reviews, with various opinions coexisting.
         </p>
+        <!-- 이미지 넣고 싶으면 여기에 추가 -->
       </div>
     </div>
   </section>
 
   <section id="proposals">
-    <p class="section-label">05 · Content Proposals</p>
+    <p class="section-label">05 · Strategic Recommendations</p>
     <h2>Strategic Recommendations for StreamKUS</h2>
 
-    <div style="display: flex; flex-direction: column; gap: 22px;">
+    <div class="accordion-list">
 
-      <div class="card proposal-card">
-        <div class="proposal-num">1</div>
-        <div>
-          <h3>When The Seasons Stay <br><span style="color:var(--muted);font-size:16px;">우리의 계절은 아직</span></h3>
+      <details class="accordion-item">
+        <summary>
+          <div class="proposal-num">1</div>
+          <div class="summary-title">
+            <h3>When The Seasons Stay</h3>
+            <span>우리의 계절은 아직 · Romance · 6-Part Netflix Series</span>
+          </div>
+          <div class="toggle-icon"></div>
+        </summary>
 
+        <div class="proposal-body">
           <div class="meta-list">
             <span>Genre: Romance</span>
-            <span>Target: Women 10s, 20s, 40s</span>
+            <span>Target: Women in their 10s, 20s, and 40s</span>
             <span>Format: 6-Part Netflix Series</span>
           </div>
 
@@ -907,68 +1043,92 @@
             While many romance dramas focus mainly on excitement, confession, or dramatic heartbreak, this series explores the quieter emotions that remain afterward. Love is portrayed not as a perfect fantasy, but as something built slowly through understanding, forgiveness, sacrifice, and shared everyday moments.
           </p>
 
+          <p>
+            The core of this content is not dramatic plot twists, but emotional realism found in ordinary life. Family dinners, old photographs, rainy conversations, silent misunderstandings, and small acts of care become emotionally meaningful moments that viewers can deeply relate to.
+          </p>
+
+          <p>
+            The series focuses on emotional humanism, showing how loneliness, regret, family conflict, and lost relationships can slowly heal through sincere connection with others. Through warm cinematography, soft seasonal visuals, emotional background music, and realistic dialogue, the drama creates a comforting atmosphere that reflects the emotional style audiences often associate with Korean romance dramas.
+          </p>
+
+          <p>
+            Rather than telling a story about perfect people, “When the Seasons Stay” portrays imperfect individuals learning how to remain beside each other despite emotional scars and changing seasons in life.
+          </p>
+
           <h4>Episodes</h4>
           <ol class="episode-list">
-            <li><strong>Ep.1: The Place I Left Behind</strong> — Returning home and facing old memories</li>
-            <li><strong>Ep.2: Things We Never Said</strong> — Emotional distance within family</li>
-            <li><strong>Ep.3: That Rain That Day</strong> — Reuniting with a first love</li>
-            <li><strong>Ep.4: Dinner For Four</strong> — Family warmth hidden in everyday life</li>
-            <li><strong>Ep.5: After The Flowers Fall</strong> — Loss, regret, and emotional healing</li>
-            <li><strong>Ep.6: When The Seasons Stay</strong> — Accepting love, family, and moving forward</li>
+            <li><strong>Ep.1: The Place I Left Behind</strong> (다시 돌아온 계절) — Returning home and facing old memories</li>
+            <li><strong>Ep.2: Things We Never Said</strong> (우리의 침묵) — Emotional distance within family</li>
+            <li><strong>Ep.3: That Rain That Day</strong> (비가 내리던 날) — Reuniting with a first love</li>
+            <li><strong>Ep.4: Dinner For Four</strong> (저녁 한 끼의 온기) — Family warmth hidden in everyday life</li>
+            <li><strong>Ep.5: After The Flowers Fall</strong> (꽃이 진 자리에) — Loss, regret, and emotional healing</li>
+            <li><strong>Ep.6: When The Seasons Stay</strong> (우리의 계절은 아직) — Accepting love, family, and moving forward</li>
           </ol>
 
           <div class="reason-box">
             <p>
-              <strong>Reasons based on collected data:</strong> Text-mining analysis showed that viewers respond strongly to emotional humanism in Korean romance dramas. Keywords such as cried, love, family, and touching suggest that audiences value sincere stories about relationships, family bonds, healing, and meaningful human connections.
+              <strong>Reasons based on collected data:</strong> Text-mining analysis revealed that viewers strongly respond to the emotional humanism that is characteristic of Korean romance dramas. Audience reactions frequently included keywords such as cried, love, family, and touching, indicating that viewers value emotionally sincere stories about relationships, family bonds, healing, and meaningful human connections.
             </p>
           </div>
         </div>
-      </div>
+      </details>
 
-      <div class="card proposal-card">
-        <div class="proposal-num">2</div>
-        <div>
-          <h3>The Second Golden Time <br><span style="color:var(--muted);font-size:16px;">두 번째 골든타임</span></h3>
+      <details class="accordion-item">
+        <summary>
+          <div class="proposal-num">2</div>
+          <div class="summary-title">
+            <h3>The Second Golden Time</h3>
+            <span>두 번째 골든타임 · Slice of Life · Netflix Series + Short-Form Content</span>
+          </div>
+          <div class="toggle-icon"></div>
+        </summary>
 
+        <div class="proposal-body">
           <div class="meta-list">
             <span>Genre: Slice of Life</span>
-            <span>Format: 6-Part Netflix Series + Short-Form Content</span>
+            <span>Format: 6-Part Netflix Series with Short-Form Content</span>
           </div>
 
           <p>
-            “The Second Golden Time” is a human and social documentary drama that focuses on what happens after a patient survives an emergency. Each episode begins with an urgent medical case, but instead of ending with a successful surgery, the story follows the patient’s second crisis after survival: medical bills, lack of caregivers, trauma, unemployment, family conflict, and social isolation.
+            The Second Golden Time is a human and social documentary drama that focuses on what happens after a patient survives an emergency. Each episode begins with an urgent medical case, such as a traffic accident, workplace injury, or emergency room crisis. However, instead of ending with a successful surgery, the story follows the patient’s second crisis after survival: medical bills, lack of caregivers, trauma, unemployment, family conflict, and social isolation.
           </p>
 
           <p>
-            The title refers to the crucial period after treatment, when a patient needs support to return to normal life. By focusing on this stage, the show can provide both tension and catharsis while delivering a realistic and empathetic social message.
+            The title “second golden time” refers to the crucial period after treatment, when a patient needs support to return to normal life. By focusing on this stage, the show can provide both the tension and catharsis that viewers enjoyed in The Trauma Code, while also delivering a more realistic and empathetic social message.
           </p>
 
           <h4>Episodes</h4>
           <ol class="episode-list">
             <li><strong>Ep.1: Alive But Not</strong> — A lone elder has nowhere to go after discharge</li>
-            <li><strong>Ep.2: Discharge Faster Than Money</strong> — A delivery driver must return to work after an accident</li>
-            <li><strong>Ep.3: Lone Wolf</strong> — Successful surgery, but no one to help afterward</li>
-            <li><strong>Ep.4: Alive At What Cost</strong> — A family struggles to pay hospital bills</li>
-            <li><strong>Ep.5: Eerie at the ER</strong> — A deeper look into a misunderstood family member</li>
-            <li><strong>Ep.6: 72 Hours After Discharge</strong> — Following a patient after discharge and showing how healthcare and community support should connect</li>
+            <li><strong>Ep.2: Discharge Faster Than Money</strong> — A delivery driver is discharged after an accident, but has no choice but to return to the road</li>
+            <li><strong>Ep.3: Lone Wolf</strong> — A successful surgery but no one to help leaves patients lifeless</li>
+            <li><strong>Ep.4: Alive At What Cost</strong> — A patient lives miraculously, but the family has no money to pay the hospital</li>
+            <li><strong>Ep.5: Eerie at the ER</strong> — A deep dive into a family member who looked like a nuisance at the beginning</li>
+            <li><strong>Ep.6: 72 Hours After Discharge</strong> — Following a patient for 72 hours after discharge and showing how healthcare and community support should be connected</li>
           </ol>
 
           <div class="reason-box">
             <p>
-              <strong>Reasons based on collected data:</strong> Viewers of The Trauma Code responded positively to fast pacing, charismatic characters, team chemistry, cathartic moments, and criticism of the medical system. However, some viewers criticized exaggerated scenes and unrealistic hero-like characters. This proposal keeps the strengths while focusing on more realistic problems after emergency treatment.
+              <strong>Reasons based on collected data:</strong> This proposal is based on our finding that viewers of The Trauma Code responded positively to fast pacing, charismatic characters, team chemistry, cathartic moments, and criticism of the medical system. Keywords such as fast-paced, characters, satisfying, medical system, and teamwork appeared repeatedly. However, viewers also criticized exaggerated scenes, unrealistic hero-like protagonists, and predictable medical drama clichés. Therefore, The Second Golden Time keeps the strengths of The Trauma Code, such as tension, teamwork, and social criticism, but avoids excessive hero fantasy by focusing on more realistic problems after emergency treatment.
             </p>
           </div>
         </div>
-      </div>
+      </details>
 
-      <div class="card proposal-card">
-        <div class="proposal-num">3</div>
-        <div>
-          <h3>Dead Chamber <br><span style="color:var(--muted);font-size:16px;">죽음의 룰렛</span></h3>
+      <details class="accordion-item">
+        <summary>
+          <div class="proposal-num">3</div>
+          <div class="summary-title">
+            <h3>Dead Chamber</h3>
+            <span>죽음의 룰렛 · Thriller · 6-Part Netflix Series</span>
+          </div>
+          <div class="toggle-icon"></div>
+        </summary>
 
+        <div class="proposal-body">
           <div class="meta-list">
             <span>Genre: Thriller</span>
-            <span>Target: Men 10s, 20s, 40s, 50+</span>
+            <span>Target: Men in their 10s, 20s, 40s, 50s and above</span>
             <span>Format: 6-Part Netflix Series</span>
           </div>
 
@@ -977,63 +1137,81 @@
           </p>
 
           <p>
-            While many survival thrillers focus mainly on violence and action, this series emphasizes psychological fear, human instinct, betrayal, and moral conflict. Suspense comes not only from deadly games but also from the emotional pressure created when ordinary people are forced to make impossible choices.
+            While many survival thrillers focus mainly on violence and action, this series emphasizes psychological fear, human instinct, betrayal, and moral conflict. The suspense comes not only from the deadly games themselves, but from the emotional pressure created when ordinary people are forced to make impossible choices to survive.
+          </p>
+
+          <p>
+            The core of this content is not simply death, but fear and uncertainty. The roulette wheel symbolizes fate, randomness, and desperation. As the game progresses, trust collapses between the participants, hidden secrets are revealed, and viewers begin questioning whether survival can still preserve someone’s humanity.
+          </p>
+
+          <p>
+            The series is designed to maximize immersion through dark cinematic visuals, CG-enhanced game sequences, rapid editing, intense sound design, and claustrophobic camera work. Rather than relying only on shocking scenes, the story builds tension through psychological warfare and unpredictable twists that encourage viewers to continue watching and discussing theories online.
           </p>
 
           <h4>Episodes</h4>
           <ol class="episode-list">
-            <li><strong>Ep.1: The Invitation</strong> — Six strangers enter a mysterious roulette game</li>
-            <li><strong>Ep.2: The First Spin</strong> — The players realize the game is deadly</li>
-            <li><strong>Ep.3: Trust No One</strong> — Alliances form while suspicion grows</li>
-            <li><strong>Ep.4: Loaded Chamber</strong> — Hidden rules are revealed</li>
-            <li><strong>Ep.5: The Last Bet</strong> — Betrayal destroys the remaining survivors</li>
-            <li><strong>Ep.6: Dead Chamber</strong> — The truth behind the game is uncovered</li>
+            <li><strong>Ep.1: The Invitation</strong> (죽음의 초대) — Six strangers enter a mysterious roulette game</li>
+            <li><strong>Ep.2: The First Spin</strong> (첫번째 룰렛) — The players start the game, but come to a deadly realization</li>
+            <li><strong>Ep.3: Trust No One</strong> (의심의 시작) — Alliances form, while suspicion grows</li>
+            <li><strong>Ep.4: Loaded Chamber</strong> (조작된 게임) — Hidden rules are revealed and players are manipulated</li>
+            <li><strong>Ep.5: The Last Bet</strong> (최후의 선택) — Betrayal destroys the remaining survivors</li>
+            <li><strong>Ep.6: Dead Chamber</strong> (죽음의 룰렛) — The truth behind the game is uncovered</li>
           </ol>
 
           <div class="reason-box">
             <p>
-              <strong>Reasons based on collected data:</strong> Survival thrillers such as Squid Game and Parasyte have attracted strong audience attention. Review analysis showed that keywords such as immersion, visual excitement, video quality, and CG appeared frequently in thriller discussions. This suggests that viewers value cinematic tension, high-quality visuals, and immersive survival mechanics.
+              <strong>Reasons based on collected data:</strong> According to recent popularity rankings on Netflix, survival thrillers have consistently attracted strong audience attention, as shown by the global success of series such as Squid Game and Parasyte: The Grey. Text-mining analysis of viewer reviews on Watcha and Rotten Tomatoes also revealed that keywords such as immersion, visual excitement, video quality, and CG appeared frequently in thriller-related discussions. These findings suggest that audiences strongly value visually engaging experiences, cinematic tension, and high-quality production elements within the thriller genre.
             </p>
           </div>
         </div>
-      </div>
+      </details>
 
-      <div class="card proposal-card">
-        <div class="proposal-num">4</div>
-        <div>
-          <h3>We’re Not Done Yet <br><span style="color:var(--muted);font-size:16px;">우리 아직 안 끝났어</span></h3>
+      <details class="accordion-item">
+        <summary>
+          <div class="proposal-num">4</div>
+          <div class="summary-title">
+            <h3>We’re Not Done Yet</h3>
+            <span>우리 아직 안 끝났어 · Comedy · YouTube + Netflix Expansion Potential</span>
+          </div>
+          <div class="toggle-icon"></div>
+        </summary>
 
+        <div class="proposal-body">
           <div class="meta-list">
             <span>Genre: Comedy</span>
             <span>Target: 20s and 30s with high media usage</span>
-            <span>Format: YouTube + Netflix Expansion Potential</span>
+            <span>Format: YouTube Upload with Netflix Expansion Potential</span>
           </div>
 
           <p>
-            This show follows a couple who got married after seven years of dating but run into realistic fights and laughter as newlyweds. Unlike shows that focus on dating, breakup, or marriage as the ending, this series focuses on life after marriage.
+            This show follows a couple who have gotten married after seven years of dating, but run into realistic fights and laughs as newlyweds.
           </p>
 
           <p>
-            The show is centered on everyday situations such as dates after marriage, housewarming, in-laws, money, work, and social life. These familiar situations are presented in a comedic way so that viewers can easily relate to them.
+            Unlike existing shows which focus on the talking, dating, breakup, and marriage stage, this show focuses on life after marriage. It wants to show that marriage is not a happy ending but a start of something new, as the couple run into unexpected situations after becoming husband and wife.
+          </p>
+
+          <p>
+            This show is not centered around dramatic scenes, but instead is centered around aspects of daily life such as going on dates, housewarming, in-laws, money, and much more, which are situations that many viewers have come across before or will come across. This show aims to shed light on these situations in a comedic manner.
           </p>
 
           <h4>Episodes</h4>
           <ol class="episode-list">
-            <li><strong>Ep.1: Do We Need Dates? We’re Married!</strong> — Boundaries between dating and marriage</li>
-            <li><strong>Ep.2: The Housewarming War</strong> — Friends, housewarming, and appearances</li>
-            <li><strong>Ep.3: Your Mother, Not Mine!</strong> — In-law problems</li>
-            <li><strong>Ep.4: Your Money? Our Money?</strong> — Money management problems</li>
-            <li><strong>Ep.5: You’re So Stuck In The Past</strong> — Repetitive talk about past experiences</li>
-            <li><strong>Ep.6: You’ve Got Company</strong> — Social life after marriage</li>
+            <li><strong>Ep.1: Do We Need Dates? We’re Married!</strong> (결혼했는데 왜 데이트해야 돼?) — On the boundaries of dating and marriage</li>
+            <li><strong>Ep.2: The Housewarming War</strong> (신혼집 집들이가 전쟁이 되는 법) — Friends, housewarming, and how we look</li>
+            <li><strong>Ep.3: Your Mother, Not Mine!</strong> (양가 단톡방 답장은 누가 해?) — In-law problems</li>
+            <li><strong>Ep.4: Your Money? Our Money?</strong> (우리 돈이야, 내 돈이야?) — Money management problems</li>
+            <li><strong>Ep.5: You’re So Stuck In The Past</strong> (너 아직도 군대 얘기해?) — Repetitive talk about past experiences and problems</li>
+            <li><strong>Ep.6: You’ve Got Company</strong> (회사 사람 앞 내 배우자) — Social life after marriage</li>
           </ol>
 
           <div class="reason-box">
             <p>
-              <strong>Reasons based on collected data:</strong> YouTube comments and social media posts about Shortbox showed that viewers react strongly to relatable comedy based on everyday life. Keywords such as newlywed, military service, work, and marriage appeared often. Because some viewers also used negative words such as boring, repetitive, and stop, this proposal chooses the less common topic of life after marriage and leaves room for future episode topics to be decided through viewer comments.
+              <strong>Reasons based on collected data:</strong> After analyzing YouTube comments and social media posts about Shortbox, we concluded that viewers reacted better to comedy when it is based on relatable aspects of life. There were also many requests for an expansion on this series, along with mentions of keywords such as newlywed, military service, work, and marriage. This was the reason behind the format allowing for expansion. If the series expands, viewer comments can be used to decide the topic of future episodes, helping the show avoid repetition and better match viewer wants and needs. Since some comments reacted negatively with words such as boring, repetitive, and stop, we chose life after marriage as a relatively less common topic.
             </p>
           </div>
         </div>
-      </div>
+      </details>
 
     </div>
   </section>
@@ -1047,7 +1225,7 @@
       <div>
         <h3>Limited Data Scope</h3>
         <p>
-          The analysis was based on selected contents and available online comments, so the findings may not fully represent every viewer group.
+          The data came mainly from publicly available reviews, YouTube comments, and online community posts. These comments do not represent all viewers because people who post online are usually more active, emotional, or opinionated than silent viewers.
         </p>
       </div>
     </div>
@@ -1055,9 +1233,9 @@
     <div class="limit-item">
       <div class="limit-icon">⚠️</div>
       <div>
-        <h3>Platform Bias</h3>
+        <h3>Platform Differences</h3>
         <p>
-          Viewer reactions may differ depending on the platform. YouTube comments, Watchapedia reviews, Rotten Tomatoes reviews, and community posts may each reflect different user groups.
+          The amount and type of data differed depending on the content and platform. Some works had many YouTube comments, while others had more review-site data or community discussions, which made direct comparison difficult.
         </p>
       </div>
     </div>
@@ -1065,9 +1243,9 @@
     <div class="limit-item">
       <div class="limit-icon">⚠️</div>
       <div>
-        <h3>Interpretation Limits</h3>
+        <h3>Text Mining Limits</h3>
         <p>
-          Some reactions may include sarcasm, exaggeration, or context-dependent meanings that are difficult to fully capture through text mining alone.
+          Slang, memes, sarcasm, abbreviations, swear words, and community-specific expressions are difficult for AI tools to understand accurately. Because of this, some audience reactions may have been misclassified or not fully reflected in the analysis.
         </p>
       </div>
     </div>
@@ -1079,11 +1257,23 @@
 
     <div class="card conclusion-card">
       <p>
-        This project analyzed viewer reactions to eight popular contents across four genre categories. The analysis showed that each genre appeals to audiences through different emotional and narrative elements. Romance content depends strongly on emotional immersion, chemistry, and sincere human relationships. Slice of life content works well when it delivers empathy, realism, education, and a clear social message. Thriller content attracts viewers through creative storylines, visual immersion, suspense, and strong production quality. Comedy content becomes effective when it uses relatable situations, everyday humor, and social satire while avoiding excessive exaggeration or repetition.
+        This project aimed to help StreamKUS plan its first original content through a data-driven approach rather than relying only on intuition. By analyzing audience reviews, YouTube comments, and online community discussions across romance, thriller, slice of life, and comedy, we identified several patterns in what viewers respond to most strongly.
       </p>
 
       <p>
-        Based on these findings, StreamKUS should develop content that clearly delivers emotional value to viewers. The proposed ideas are an emotional romance drama, a realistic human and social drama, a psychological survival thriller, and a short-form comedy series with expansion potential. However, this analysis has limitations because the selected contents and data sources were limited. With more time, future research could collect more comments from additional platforms and compare audience reactions by age group, gender, country, and platform.
+        Overall, the analysis showed that viewers are attracted to content with clear emotional appeal, strong characters, relatable situations, and memorable story elements. In romance, viewers responded positively to emotional storytelling, family relationships, healing, and visually warm scenes, while they reacted negatively to unnecessary scenes or incomplete plots. In slice of life content, viewers valued meaningful messages, realistic characters, educational elements, and emotional sincerity, but disliked repetitive or unrealistic storytelling. In thriller content, audiences were drawn to creative storylines, strong acting, suspense, visual quality, and immersive tension, while weak logic or disappointing endings caused negative reactions. In comedy, viewers enjoyed relatable everyday topics, character-based humor, satire, and social commentary, but were critical of exaggerated settings, forced humor, excessive political intent, or repetitive formats.
+      </p>
+
+      <p>
+        Based on these findings, we proposed four content ideas for StreamKUS. “When The Seasons Stay” was designed as an emotional romance and healing drama based on the strong viewer preference for family, love, touching stories, and emotional humanism. “The Second Golden Time” was proposed as a human and social medical drama that keeps the urgency and teamwork audiences enjoyed in The Trauma Code, while focusing more realistically on patients’ lives after treatment. “Dead Chamber” was created as a psychological survival thriller based on the popularity of suspense, visual immersion, high production quality, and moral conflict in thriller content. Finally, “We’re Not Done Yet” was proposed as a relatable comedy about life after marriage, based on audience reactions to Shortbox and SNL that showed strong interest in everyday humor, relationship comedy, satire, and expandable short-form formats.
+      </p>
+
+      <p>
+        If more time and data were available, this project could be expanded by collecting more data from additional platforms such as TikTok, Instagram, X, Reddit, blogs, and more Korean online communities. Future research could also analyze audience reactions by demographic group, such as age, gender, country, or platform, to understand more precisely which viewers prefer which genres and story elements.
+      </p>
+
+      <p>
+        In conclusion, this project shows that audience data can provide useful direction for content strategy. While data cannot completely replace creative judgment, it can help identify what viewers value, what they criticize, and what kinds of stories are more likely to attract attention. For a new media company like StreamKUS, combining data-based insight with creative storytelling can reduce risk and lead to more audience-centered content planning.
       </p>
     </div>
   </section>
@@ -1116,6 +1306,18 @@
       <div class="ref-item">
         <span class="ref-num">[6]</span>
         <span>https://colab.research.google.com/drive/116H4h0TPEySDIFW5DBKDdVyW8DWdSu9W</span>
+      </div>
+      <div class="ref-item">
+        <span class="ref-num">[7]</span>
+        <span>https://theqoo.net/square/2487689967</span>
+      </div>
+      <div class="ref-item">
+        <span class="ref-num">[8]</span>
+        <span>https://gall.dcinside.com/board/view/?id=dcbest&no=414021</span>
+      </div>
+      <div class="ref-item">
+        <span class="ref-num">[9]</span>
+        <span>https://www.fmkorea.com/9667456984</span>
       </div>
     </div>
   </section>
